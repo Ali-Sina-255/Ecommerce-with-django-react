@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col, Card } from "react-bootstrap";
-import products from "../products";
 import Product from "../components/Product";
-import { propTypes } from "react-bootstrap/esm/Image";
+import axios from "axios";
 
 function HomeScreen() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchProduct(){
+      const {data} = await axios.get("http://127.0.0.1:8000/api/products/")
+      setProducts(data)
+    }
+  
+  fetchProduct();
+  
+    // we will get cors error
+    // corse-orgin resource sahring
+
+  }, []);
   return (
     <div>
       <h1>Latest Products</h1>
