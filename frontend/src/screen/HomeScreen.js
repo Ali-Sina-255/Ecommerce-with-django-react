@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Card } from "react-bootstrap";
+import { Row, Col} from "react-bootstrap";
 import Product from "../components/Product";
 import axios from "axios";
 
@@ -8,7 +8,7 @@ function HomeScreen() {
 
   useEffect(() => {
     async function fetchProduct(){
-      const {data} = await axios.get("http://127.0.0.1:8000/api/products/")
+      const {data} = await axios.get("/api/products/")
       setProducts(data)
     }
   

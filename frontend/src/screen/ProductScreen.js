@@ -13,27 +13,26 @@ import Rating from "../components/Rating";
 import axios from "axios";
 import products from "../products";
 function ProductScreen() {
-  const params = useParams();
+  // const params = useParams();
+  // const product = products.find((p) => p._id === params.id);
 
-  const product = products.find((p) => p._id == params.id);
+  const [product, setProduct] = useState([]);
+  const params = useParams()
 
-  // const [product, setProduct] = useState([]);
-  // const params = useParams()
+  useEffect(() => {
+    async function fetchProduct(){
+      const {data} = await axios.get(`/api/product/${params.id}`)
 
-  // useEffect(() => {
-  //   async function fetchProduct(){
-  //     const {data} = await axios.get(`/api/product-detail/${params.id}`)
+      setProduct(data)
+    }
+    console.log(params)
 
-  //     setProduct(data)
-  //   }
-  //   console.log(params)
+  fetchProduct();
 
-  // fetchProduct();
+    // we will get cors error
+    // corse-orgin resource sahring
 
-  //   // we will get cors error
-  //   // corse-orgin resource sahring
-
-  // }, []);
+  }, []);
 
   return (
     <div>
@@ -88,7 +87,7 @@ function ProductScreen() {
                 
               </ListGroup>
               <ListGroup>
-                <Button className="btn-block" disabled={product.countInStock==0} type="button">Add to card</Button>
+                <Button className="btn-block" disabled={product.countInStock===0} type="button">Add to card</Button>
               </ListGroup>
             </Card>
           </Col>
