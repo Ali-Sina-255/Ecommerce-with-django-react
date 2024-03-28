@@ -8,7 +8,7 @@ function HomeScreen() {
 
   useEffect(() => {
     async function fetchProduct(){
-      const {data} = await axios.get("/api/products/")
+      const {data} = await axios.get("products/")
       setProducts(data)
     }
   
@@ -16,6 +16,7 @@ function HomeScreen() {
   
     // we will get cors error
     // corse-orgin resource sahring
+
 
   }, []);
   return (
@@ -31,4 +32,4 @@ function HomeScreen() {
     </div>
   );
 }
-export default HomeScreen;
+export default HomeScreen;  
