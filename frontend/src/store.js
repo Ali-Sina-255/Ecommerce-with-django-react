@@ -5,7 +5,7 @@ import { productListReducer } from "./reducers/productReducers";
 
 
 const reducer = combineReducers({
-    productList: productListReducer,
+    productLists: productListReducer,
 });
 const initalState = {};
 

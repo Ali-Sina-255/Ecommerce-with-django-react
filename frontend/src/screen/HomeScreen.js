@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col} from "react-bootstrap";
 import Product from "../components/Product";
+import {useDispatch, useSelector} from "react-redux"
+import { listProducts } from "../action/productActions";
 import axios from "axios";
 
 function HomeScreen() {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch()
+
+  // const [products, setProducts] = useState([]);
+
 
   useEffect(() => {
-    async function fetchProduct(){
-      const {data} = await axios.get("products/")
-      setProducts(data)
-    }
-  
-  fetchProduct();
-  
-    // we will get cors error
-    // corse-orgin resource sahring
-
 
   }, []);
+  const products = []
   return (
     <div>
       <h1>Latest Products</h1>
